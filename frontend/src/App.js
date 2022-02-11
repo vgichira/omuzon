@@ -10,10 +10,10 @@ const App = () => {
 				<Link to="/">omuzon</Link>
 			</header>
 			<main>
-					<Routes>
-						<Route path="/" element={<HomeScreen />} />
-						<Route path='/product/:slug' element={<ProductScreen />} />
-					</Routes>
+				<Routes>
+					<Route path="/" element={<HomeScreen />} />
+					<Route path='/product/:slug' element={<ProductScreen />} />
+				</Routes>
 			</main>
 		</div>
 	</BrowserRouter>
