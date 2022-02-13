@@ -2,8 +2,11 @@ import { useEffect, useReducer } from 'react';
 import axios from 'axios';
 import logger from 'use-reducer-logger';
 import { Col, Row } from 'react-bootstrap';
-import Product from '../components/Product';
 import { Helmet } from 'react-helmet-async';
+import Product from '../components/Product';
+import MessageBox from '../components/MessageBox';
+import { getError } from '../utils';
+import LoadingBox from '../components/LoadingBox';
 
 const initialState = {
     loading: false, 
@@ -54,7 +57,7 @@ const HomeScreen = () => {
             } catch (err) {
                 dispatch({
                     type: 'FETCH_FAIL',
-                    payload: err.message
+                    payload: getError(err)
                 })
             }
         }
@@ -71,10 +74,10 @@ const HomeScreen = () => {
             <div className="products">
             {
                 loading ? (
-                    <div>Loading...</div>
+                    <LoadingBox />
                 )
                 : error ? (
-                    <div>{error}</div>
+                    <MessageBox variant="danger">{error}</MessageBox>
                 )
                 : (
                     <Row>

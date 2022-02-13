@@ -10,7 +10,7 @@ app.get('/api/products', (req, res) => {
 app.get('/api/product/:slug', (req, res) => {
     const product = data.products.find(product => product.slug === req.params.slug)
 
-    if (!product) return res.send({message: "Product not found"})
+    if (!product) return res.status(404).send({message: "Product not found"})
 
     res.send(product)
 })
